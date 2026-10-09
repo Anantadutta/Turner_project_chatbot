@@ -1,0 +1,7 @@
+﻿pymupdf
+langchain-text-splitters
+google-genai
+python-dotenv
+numpy
+pillow
+streamlit
