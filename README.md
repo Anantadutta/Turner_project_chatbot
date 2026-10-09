@@ -1,4 +1,4 @@
-﻿# Turner - Document-Grounded Chatbot (RAG)
+﻿# Spiderman Company - Document-Grounded Chatbot (RAG)
 
 An internal chatbot that answers employee questions **only from company documents**, including text inside images, charts, tables and scanned pages. If the answer is not in the documents, it says so instead of guessing.
 

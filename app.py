@@ -1,4 +1,4 @@
-import os, re, json, math
+﻿import os, re, json, math
 from collections import Counter
 import numpy as np
 import streamlit as st
@@ -26,11 +26,11 @@ GREETING_RULES = [
     (r"how are you|how r u|how's it going|whats up|what's up|sup", "I'm doing great, thanks for asking! Ready to dig into the company documents for you."),
     (r"thank|thanks|thx|ty", "You're welcome! Happy to help. Anything else you'd like to know?"),
     (r"bye|goodbye|see you|good night", "Goodbye! Have a great day. Come back anytime you need something from the documents."),
-    (r"who are you|what are you|your name", "I'm the Turner document assistant. I read the company's documents, including charts, tables and scanned pages, and answer questions using only what's in them."),
+    (r"who are you|what are you|your name", "I'm the Spiderman Company document assistant. I read the company's documents, including charts, tables and scanned pages, and answer questions using only what's in them."),
     (r"what can you do|help", "I can answer questions about the company documents and show you exactly which page each answer comes from, including information inside images and charts."),
     (r"talk to me|chat", "I'm right here! I'm happy to chat about anything in the company documents."),
     (r"^(ok|okay|cool|nice|great|awesome)", "Great! Let me know whenever you have a question."),
-    (r"hi+|hello+|hey+|yo|namaste|hola", "Hello! Welcome to the Turner document assistant. How can I help you today?"),
+    (r"hi+|hello+|hey+|yo|namaste|hola", "Hello! Welcome to the Spiderman Company document assistant. How can I help you today?"),
 ]
 
 SMALL_TALK = re.compile(
@@ -63,7 +63,7 @@ def small_talk_reply(q):
     name = name_intro(q)
     if name:
         st.session_state.user_name = name
-        return f"Nice to meet you, {name}! I'm the Turner document assistant. What would you like to know about the company documents?\n\n" + EXAMPLES
+        return f"Nice to meet you, {name}! I'm the Spiderman Company document assistant. What would you like to know about the company documents?\n\n" + EXAMPLES
     low = q.lower()
     for pattern, reply in GREETING_RULES:
         if re.search(r"\b(" + pattern + r")\b", low):
@@ -73,7 +73,7 @@ def small_talk_reply(q):
 
 STOP = set("the a an and or of to in on for is are was were be by with what which who how does do this that it as at from about explain tell me please".split())
 
-SYSTEM_PROMPT = f"""You are the internal document assistant for Turner.
+SYSTEM_PROMPT = f"""You are the internal document assistant for Spiderman Company.
 Rules:
 1. Answer ONLY using the CONTEXT provided and the attached page images. Never use outside knowledge.
 2. If the answer is not in the context, reply exactly: "{NOT_FOUND}"
@@ -159,8 +159,8 @@ def answer(client, question, hits, history):
     return f"Sorry, the AI service is busy right now. Please try again. ({str(last_error)[:80]})"
 
 
-st.set_page_config(page_title="Turner - Document Assistant")
-st.title("Turner Document Assistant")
+st.set_page_config(page_title="Spiderman Company - Document Assistant")
+st.title("Spiderman Company Document Assistant")
 st.caption("Answers only from company documents, including charts, tables and scanned pages.")
 
 client, vectors, chunks, embed_model, bm25 = load_everything()
@@ -174,7 +174,7 @@ for m in st.session_state.messages:
 # WELCOME_SHOWN
 if not st.session_state.messages:
     with st.chat_message("assistant"):
-        st.markdown("Hello! I'm the Turner document assistant. Ask me anything about the company documents.\n\n" + EXAMPLES)
+        st.markdown("Hello! I'm the Spiderman Company document assistant. Ask me anything about the company documents.\n\n" + EXAMPLES)
 
 question = st.chat_input("Ask a question about the company documents...")
 if question:
